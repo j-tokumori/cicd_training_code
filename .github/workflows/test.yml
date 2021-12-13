@@ -1,0 +1,15 @@
+name: deploy
+on:
+  push:
+    branches:
+      - feature/test
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    if: contains(github.event.head_commit.message, '[skip ci]') == false
+
+    steps:
+      - name: test echo
+        run: |
+          echo "test !"
