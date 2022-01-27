@@ -7,7 +7,7 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-    text := "CICD Training."
+    text := "CICD Training 2."
     fmt.Fprint(w, "Hi there, I'm ", text)
 }
 
