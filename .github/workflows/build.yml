@@ -16,7 +16,9 @@ jobs:
       - uses: actions/checkout@v2.4.0
 
       - name: Test
-        run: go test ./...
+        run: |
+          go mod init
+          go test ./...
 
       - name: Build
         run: go build server.go
