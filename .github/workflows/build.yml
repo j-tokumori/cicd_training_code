@@ -28,6 +28,5 @@ jobs:
           HOST_NAME: ${{ secrets.HOST_NAME }}
         run: |
           echo "${PRIVATE_KEY}" > private_key && chmod 600 private_key
-          ls -la ~/.ssh
-          cat ~/.ssh/known_hosts
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} "kill -9 `lsof -i:8080 | grep server | awk '{print $2}'` 2>/dev/null; ./server &"
+          scp -oStrictHostKeyChecking=no -i private_key server ${USER_NAME}@${HOST_NAME}:
+          ssh -oStrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} "kill -9 `lsof -i:8080 | grep server | awk '{print $2}'` 2>/dev/null; ./server &"
